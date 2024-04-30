@@ -1,0 +1,131 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+
+export type TwitterHandle = `@${string}`;
+
+export interface Author {
+  name: string;
+  twitterHandle: TwitterHandle;
+}
+
+export interface Props {
+  author: Author;
+  canonicalURL: URL;
+  description: string;
+  defaultKeywords: string[];
+  keywords?: string[];
+  siteName: string;
+  siteFaviconSvg: ImageMetadata;
+  siteLocale?: string;
+  siteTwitterHandle?: TwitterHandle;
+  socialImagePath: string;
+  socialImageAltText?: string;
+  socialTwitterCardType?:
+    | 'summary'
+    | 'summary_large_image'
+    | 'app'
+    | 'player';
+  siteThemeColour?: `#${string}`;
+  contentType?: 'article' | 'website';
+  title: string;
+}
+
+const {
+  author,
+  title,
+  canonicalURL,
+  description,
+  defaultKeywords,
+  keywords: extraKeywords = [],
+  siteName,
+  siteFaviconSvg,
+  siteLocale = 'en_US',
+  siteTwitterHandle,
+  /**
+   * image pathname relative to the public folder
+   */
+  socialImagePath: socialImage,
+  socialImageAltText = title,
+  socialTwitterCardType = 'summary_large_image',
+  siteThemeColour,
+  contentType = 'website',
+} = Astro.props;
+
+const faviconSvg = await getImage({
+  src: siteFaviconSvg,
+  format: 'svg',
+});
+
+const canonicalImageSrc = new URL(socialImage, Astro.site);
+const sanitizedDescription = description.replace(/(<([^>]+)>)/gi, '');
+
+const keywords = Array.from(
+  new Set([...defaultKeywords, ...extraKeywords])
+).join(', ');
+const authorTwitterHandle = author.twitterHandle;
+---
+
+<head>
+  <!-- Global Metadata -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {
+    siteThemeColour && (
+      <meta name="theme-color" content={siteThemeColour} />
+    )
+  }
+  <!-- todo: Apple touch icon -->
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /> -->
+  <link rel="icon" type="image/svg+xml" href={siteFaviconSvg.src} />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+
+  <!-- todo: sitemap -->
+  <!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
+  <!-- todo: rss feed -->
+  <!-- <link
+    rel="alternate"
+    type="application/rss+xml"
+    href="/rss.xml"
+    title="Leosvel's blog RSS Feed"
+  /> -->
+
+  <!-- Primary Meta Tags -->
+  <title set:html={title} />
+  <meta name="title" content={title} />
+  <meta name="author" content={author.name} />
+  <meta name="description" content={sanitizedDescription} />
+  <meta name="keywords" content={keywords} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- OpenGraph Tags -->
+  <meta property="og:type" content={contentType} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={sanitizedDescription} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content={siteLocale} />
+  <meta property="og:image" content={canonicalImageSrc} />
+  <meta property="og:image:alt" content={socialImageAltText} />
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content={socialTwitterCardType} />
+  {
+    siteTwitterHandle && (
+      <meta name="twitter:site" content={siteTwitterHandle} />
+    )
+  }
+  {
+    authorTwitterHandle && (
+      <meta name="twitter:creator" content={authorTwitterHandle} />
+    )
+  }
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={sanitizedDescription} />
+  <meta name="twitter:image" content={canonicalImageSrc} />
+  <meta name="twitter:image:alt" content={socialImageAltText} />
+
+  <meta name="generator" content={Astro.generator} />
+
+  <slot />
+</head>
