@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "@lab/typescript-config/base.json",
-    "astro/tsconfigs/strict"
-  ],
+  "extends": ["astro/tsconfigs/strict"],
   "compilerOptions": {
     "lib": ["ES2015"],
     "jsx": "react-jsx",
