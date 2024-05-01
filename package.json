@@ -2,17 +2,9 @@
   "name": "visor",
   "version": "0.1.0",
   "description": "Full-coverage `<head>` gear for Astro apps.",
-  "type": "module",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./components": "./components/index.ts"
-  },
   "license": "MIT",
   "scripts": {
+    "build": "astro build",
     "lint": "eslint",
     "format": "format"
   },
@@ -22,7 +14,6 @@
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
-    "@lab/eslint-config": "workspace:*",
-    "@lab/typescript-config": "workspace:*"
+    "@binz/eslint": "*"
   }
 }
