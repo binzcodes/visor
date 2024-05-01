@@ -14,6 +14,7 @@
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
-    "@binz/eslint": "*"
+    "@binz/eslint": "*",
+    "@binz/tsconfig": "workspace:*"
   }
 }

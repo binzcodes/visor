@@ -1,5 +1,5 @@
 {
-  "extends": ["astro/tsconfigs/strict"],
+  "extends": ["@binz/tsconfig/base.json", "astro/tsconfigs/strict"],
   "compilerOptions": {
     "lib": ["ES2015"],
     "jsx": "react-jsx",
