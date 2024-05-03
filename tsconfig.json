@@ -1,14 +1,12 @@
 {
-  "extends": [
-    "@lab/typescript-config/base.json",
-    "astro/tsconfigs/strict"
-  ],
+  "extends": ["@binz/tsconfig/base.json", "astro/tsconfigs/strict"],
   "compilerOptions": {
     "lib": ["ES2015"],
     "jsx": "react-jsx",
     "outDir": "./dist",
     "types": ["node"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src", "index.ts"],
+  "exclude": ["node_modules", "dist"],
+  "moduleResolution": "node"
 }
