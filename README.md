@@ -1,6 +1,6 @@
 # Visor
 
-Full-coverage `<head>` gear for Astro apps.
+Full-coverage `<head>` gear for your Astro app.
 
 Visor automatically generates the necessary HTML tags for global metadata, including:
 
@@ -127,4 +127,4 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 This Astro Head component is open source and available under the MIT License.
 
 ## Credits
-Visor builds on [Favicon Generation with Astro](https://kremalicious.com/favicon-generation-with-astro/)  by [Matthias Kretschmann](https://matthiaskretschmann.com/)
+Visor builds on [Favicon Generation with Astro](https://kremalicious.com/favicon-generation-with-astro/) by [Matthias Kretschmann](https://matthiaskretschmann.com/)
