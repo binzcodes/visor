@@ -29,6 +29,7 @@ export interface Props {
   siteThemeColour?: `#${string}`;
   contentType?: 'article' | 'website';
   title: string;
+  pwa?: boolean;
 }
 
 const {
@@ -50,6 +51,7 @@ const {
   socialTwitterCardType = 'summary_large_image',
   siteThemeColour,
   contentType = 'website',
+  pwa = false,
 } = Astro.props;
 
 const faviconSvg = await getImage({
@@ -126,6 +128,9 @@ const authorTwitterHandle = author.twitterHandle;
   <meta name="twitter:image:alt" content={socialImageAltText} />
 
   <meta name="generator" content={Astro.generator} />
+
+  { pwa && <link rel="manifest" href="/manifest.json" /> }
+
 
   <slot />
 </head>
