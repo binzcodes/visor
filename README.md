@@ -13,7 +13,7 @@ You can customize the values of these tags by passing the appropriate props to t
 
 ## Installation
 
-To install Visor, run on of the following commands in your Astro project:
+To install Visor, run one of the following commands in your Astro project:
 
 ```bash
 pnpm install @binz/visor
@@ -26,6 +26,22 @@ npm install @binz/visor
 ```bash
 yarn add @binz/visor
 ```
+
+For full PWA support you will need to have Astro experimental assets turned on in your `astro.config.mjs` file:
+
+```diff js
+// astro.config.mjs
+export default {
+  // ...
+  experimental: {
+    // ...
++   assets: true,
+  },
+  // ...
+};
+```
+
+To add 
 
 ## Usage
 
@@ -56,6 +72,48 @@ import logoSvgSrc from '../../public/Logo.svg';
   </body>
 </html>
 ```
+
+Visor simplifies dynamic favicon generation with a pre-configured `favicon.ico` file. 
+
+```ts
+// pages/favicon.ico
+import type { APIRoute } from "astro";
+import Favicon from "../lib/favicon";
+import path from "node:path";
+
+const faviconSrc = path.resolve("src/images/Logo.svg");
+
+export const GET: APIRoute = Favicon({ faviconSrc });
+```
+
+Visor can also be used to generate a `manifest.json` file for PWA support using Astro’s [Static File Endpoints feature](https://docs.astro.build/en/core-concepts/endpoints/). 
+
+Add the `pwa` prop to the <Head> component in your Astro layout:
+
+```jsx
+// src/layouts/default.astro
+<Head
+  title="Example Site" 
+  {'...'} 
+  pwa
+/>
+```
+
+Then create a new API route to generate the `manifest.json` file:
+
+```ts
+// pages/manifest.json.ts
+import type { APIRoute } from "astro";
+import path from 'node:path';
+import Manifest from '../lib/manifest';
+
+const faviconSrc = path.resolve('./public/Logo.svg');
+const faviconPngSizes = [192, 512];
+
+export const GET: APIRoute = Manifest({ faviconSrc, faviconPngSizes });
+```
+
+## Example
 
 A more detailed example of how to use `Visor` in an Astro layout is shown below:
 
@@ -110,8 +168,9 @@ const title = `${pageTitle} | ${SITE_NAME}`;
     socialImageAltText={socialImageAltText}
     siteThemeColour={SITE_THEME_COLOUR}
     title={title}
+    pwa
   >
-    <!-- Add custom head tags here -->
+    <!-- Add custom head tags -->
     <link rel="stylesheet" href="/styles/global.css" />
   </Head>
   <body>
