@@ -9,6 +9,7 @@ interface Manifest {
   start_url?: string;
   display?: string;
   theme_color?: string;
+  background_color?: string;
   id?: string;
   icons?: Array<{src: string; type: string; sizes: string}>;
 }
@@ -28,6 +29,7 @@ export const buildManifest: ManifestRoute =
     start_url = "/",
     display = "standalone",
     theme_color = "#000000",
+    background_color = "#ffffff",
     id = name.replace(/[\s.]/g, "-").toLowerCase(),
     favicon: {src, faviconSizes = faviconPngSizes, ...faviconOptions},
   }): APIRoute =>
@@ -54,6 +56,7 @@ export const buildManifest: ManifestRoute =
       start_url,
       display,
       theme_color,
+      background_color,
       id,
       icons,
     };
