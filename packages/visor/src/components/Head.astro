@@ -58,6 +58,13 @@ const faviconSvg = await getImage({
   src: siteFaviconSvg,
   format: 'svg',
 });
+const appleTouchIcon = await getImage({
+  src: siteFaviconSvg,
+  width: 180,
+  height: 180,
+  format: 'png'
+})
+// const faviconSvg = await getImage({ src: siteFaviconSvg, format: 'svg' })
 
 const canonicalImageSrc = new URL(socialImage, Astro.site);
 const sanitizedDescription = description.replace(/(<([^>]+)>)/gi, '');
@@ -78,8 +85,8 @@ const authorTwitterHandle = author.twitterHandle;
     )
   }
   <!-- todo: Apple touch icon -->
-  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /> -->
-  <link rel="icon" type="image/svg+xml" href={siteFaviconSvg.src} />
+  <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon.src} />
+  <link rel="icon" type="image/svg+xml" href={faviconSvg.src} />
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
 
   <!-- todo: sitemap -->
@@ -89,7 +96,7 @@ const authorTwitterHandle = author.twitterHandle;
     rel="alternate"
     type="application/rss+xml"
     href="/rss.xml"
-    title="Leosvel's blog RSS Feed"
+    title="Blog RSS Feed"
   /> -->
 
   <!-- Primary Meta Tags -->
