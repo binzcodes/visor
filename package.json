@@ -12,14 +12,14 @@
     "format": "format"
   },
   "dependencies": {
-    "@types/node": "^20.11.24",
-    "astro": "^4.7.0",
+    "@types/node": "^20.17.0",
+    "astro": "^4.16.7",
     "sharp": "^0.33.5",
     "sharp-ico": "^0.1.5",
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
-    "@binz/eslint": "^0.1.1",
-    "@binz/tsconfig": "^0.2.1"
+    "@binz/eslint": "^0.1.5",
+    "@binz/tsconfig": "^0.3.2"
   }
 }
