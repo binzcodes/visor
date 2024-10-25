@@ -1,25 +1,14 @@
 {
-  "name": "@binz/visor",
-  "version": "0.2.1",
+  "name": "visor",
+  "version": "0.0.1",
   "description": "Full-coverage `<head>` gear for your Astro app.",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "astro build",
-    "lint": "eslint",
-    "format": "format"
   },
   "dependencies": {
-    "@types/node": "^20.17.0",
-    "astro": "^4.16.7",
-    "sharp": "^0.33.5",
-    "sharp-ico": "^0.1.5",
-    "web-vitals": "^3.5.2"
-  },
-  "devDependencies": {
-    "@binz/eslint": "^0.1.5",
-    "@binz/tsconfig": "^0.3.2"
+    "@types/node": "^20.17.0"
   }
 }
