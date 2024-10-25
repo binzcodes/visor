@@ -1,9 +1,9 @@
-import type { APIRoute } from "astro";
+import type {APIRoute} from "astro";
 import sharp from "sharp";
 import ico from "sharp-ico";
 
 export interface FaviconOptions {
-  faviconSrc: string
+  faviconSrc: string;
 }
 
 type FaviconRoute = (options: FaviconOptions) => APIRoute;
