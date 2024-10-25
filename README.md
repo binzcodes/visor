@@ -64,7 +64,9 @@ See the core package [README](./packages/visor/README.md) for advanced usage inc
 - [Dynamic favicon generation](./packages/visor/README.md#site-favicon-generation)
 
 ## Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request to the GitHub repository.
+
+This repository uses [Changesets](./.changeset/README.md) to manage releases.
 
 ## License
 This Astro Head component is open source and available under the MIT License.
