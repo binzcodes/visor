@@ -11,7 +11,7 @@
   "exports": {
     ".": "./index.ts",
     "./manifest": "./src/lib/manifest.ts",
-    "./favicon": "./src/lin/favicon.ts"
+    "./favicon": "./src/lib/favicon.ts"
   },
   "files": [
     "src",
