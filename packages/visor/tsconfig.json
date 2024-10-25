@@ -1,12 +1,6 @@
 {
   "extends": ["@binz/tsconfig/base.json", "astro/tsconfigs/strict"],
   "compilerOptions": {
-    "lib": ["ES2015"],
-    "jsx": "react-jsx",
-    "outDir": "./dist",
-    "types": ["node"]
-  },
-  "include": ["src", "index.ts", "example-pages"],
-  "exclude": ["node_modules", "dist"],
-  "moduleResolution": "node"
+    "jsx": "preserve"
+  }
 }

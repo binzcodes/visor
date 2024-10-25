@@ -9,6 +9,10 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
     "ci:publish": "turbo run build && changeset publish"
   },
   "dependencies": {

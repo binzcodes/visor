@@ -2,29 +2,48 @@
   "name": "@binz/visor",
   "version": "0.2.1",
   "description": "Full-coverage `<head>` gear for your Astro app.",
+  "homepage": "https://github.com/binzcodes/visor#readme",
+  "type": "module",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
+  "exports": {
+    ".": "./index.ts",
+    "./manifest": "./src/lib/manifest.ts",
+    "./favicon": "./src/lin/favicon.ts"
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "keywords": [
+    "astro",
+    "withastro",
+    "astro-component",
+    "visor",
+    "head",
+    "devtools",
+    "tooling",
+    "seo",
+    "optimization"
+  ],
   "scripts": {
-    "build": "astro build",
     "lint": "eslint",
     "format": "format"
   },
-  "dependencies": {
-    "@types/node": "^20.17.0",
-    "astro": "^4.16.7",
-    "sharp": "^0.33.5",
-    "sharp-ico": "^0.1.5",
-    "web-vitals": "^3.5.2"
-  },
   "devDependencies": {
     "@binz/eslint": "^0.1.5",
-    "@binz/tsconfig": "^0.3.2"
+    "@binz/tsconfig": "^0.3.2",
+    "astro": "^4.16.7"
   },
   "peerDependencies": {
-    "astro": "^4.16.7",
+    "astro": "^4.0.0",
     "sharp": "^0.33.5",
     "sharp-ico": "^0.1.5"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.6.3"
   }
 }
