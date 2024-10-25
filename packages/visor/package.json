@@ -21,5 +21,10 @@
   "devDependencies": {
     "@binz/eslint": "^0.1.5",
     "@binz/tsconfig": "^0.3.2"
+  },
+  "peerDependencies": {
+    "astro": "^4.16.7",
+    "sharp": "^0.33.5",
+    "sharp-ico": "^0.1.5"
   }
 }

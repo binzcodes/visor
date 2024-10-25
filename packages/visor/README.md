@@ -16,16 +16,18 @@ You can customize the values of these tags by passing the appropriate props to t
 To install Visor, run one of the following commands in your Astro project:
 
 ```bash
-pnpm install @binz/visor
+pnpm install @binz/visor sharp sharp-ico
 ```
 
 ```bash
-npm install @binz/visor
+npm install @binz/visor sharp sharp-ico
 ```
 
 ```bash
-yarn add @binz/visor
+yarn add @binz/visor sharp sharp-ico
 ```
+
+Currently, Visor requires the `sharp` and `sharp-ico` packages to be installed in your project.
 
 ## Usage
 
