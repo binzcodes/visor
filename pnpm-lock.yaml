@@ -11,6 +11,12 @@ importers:
       '@types/node':
         specifier: ^20.17.0
         version: 20.17.0
+
+  packages/visor:
+    dependencies:
+      '@types/node':
+        specifier: ^20.17.0
+        version: 20.17.0
       astro:
         specifier: ^4.16.7
         version: 4.16.7(@types/node@20.17.0)(rollup@4.24.0)(typescript@5.6.3)
@@ -28,8 +34,8 @@ importers:
         specifier: ^0.1.5
         version: 0.1.5
       '@binz/tsconfig':
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^0.3.2
+        version: 0.3.2
 
 packages:
 
@@ -148,8 +154,8 @@ packages:
   '@binz/eslint@0.1.5':
     resolution: {integrity: sha512-HBB6DL7pxEpKVUjtzexejXYEU02HYi6UKVH3xvQLhrFTO8Ohiy1HS4WYBrF0DDngcky4JvWWKfrn+N5OTTjxKA==}
 
-  '@binz/tsconfig@0.2.1':
-    resolution: {integrity: sha512-2La/+Mo7AC78hMUnNJNV/Eqcy3od88G7O1G95FrBcWJMtJtvBmRzhlbU55vlA8Fx9XM9BfCv58DLAOoTOlw27g==}
+  '@binz/tsconfig@0.3.2':
+    resolution: {integrity: sha512-xyXUj9KxoxIh3AostoKR17Z2/mih/kQuoWbB21K8HoPGu8ZiMV76gGutrHvDFJdexgTPJElCWroB4tJ2qplkow==}
 
   '@canvas/image-data@1.0.0':
     resolution: {integrity: sha512-BxOqI5LgsIQP1odU5KMwV9yoijleOPzHL18/YvNqF9KFSGF2K/DLlYAbDQsWqd/1nbaFuSkYD/191dpMtNh4vw==}
@@ -1794,7 +1800,7 @@ snapshots:
 
   '@binz/eslint@0.1.5': {}
 
-  '@binz/tsconfig@0.2.1': {}
+  '@binz/tsconfig@0.3.2': {}
 
   '@canvas/image-data@1.0.0': {}
 

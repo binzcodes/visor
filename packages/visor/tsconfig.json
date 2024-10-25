@@ -6,7 +6,7 @@
     "outDir": "./dist",
     "types": ["node"]
   },
-  "include": ["src", "index.ts"],
+  "include": ["src", "index.ts", "example-pages"],
   "exclude": ["node_modules", "dist"],
   "moduleResolution": "node"
 }

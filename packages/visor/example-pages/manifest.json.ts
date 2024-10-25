@@ -1,5 +1,5 @@
 import type {APIRoute} from "astro";
-import Manifest from "../lib/manifest";
+import Manifest from "../src/lib/manifest";
 
 import favicon from "../images/Logo.svg";
 
