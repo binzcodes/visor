@@ -36,16 +36,24 @@ Import the <Head> component from the Visor package and use it in your Astro Layo
 ```jsx
 // src/layouts/default.astro
 ---
-import { Head } from '@binz/visor/Head.astro'
-import logoSvgSrc from '../../public/Logo.svg';
+import {Visor} from '@binz/visor';
+import logoSvgSrc from '../images/Logo.svg';
+
+interface Props {
+  title: string;
+}
+
+const { title: pageTitle } = Astro.props;
+const canonicalUrl = Astro.url;
 ---
+<!doctype html>
 <html lang="en">
-  <Head
+  <Visor
     author={{{
       name: "Joe Bloggs",
       twitterHandle: "@joe_blogs"
     }}}
-    canonicalURL="https://example.com"
+    canonicalURL={canonicalUrl}
     description="Built with visor"
     defaultKeywords={[]}
     siteName="Example Site"
@@ -61,32 +69,32 @@ import logoSvgSrc from '../../public/Logo.svg';
 
 ### Site Favicon Generation
 
-Visor simplifies dynamic favicon generation with a pre-configured `favicon.ico` file. 
+Visor simplifies dynamic favicon generation with a pre-configured `favicon.ico` file.
 
 Create a new API route at `pages/favicon.ico` to generate the favicon:
 
 ```ts
 // pages/favicon.ico
-import type { APIRoute } from "astro";
-import Favicon from "../lib/favicon";
 import path from "node:path";
+import type {APIRoute} from "astro";
+import Favicon from "@binz/visor/favicon";
 
 const faviconSrc = path.resolve("src/images/Logo.svg");
 
-export const GET: APIRoute = Favicon({ faviconSrc });
+export const GET: APIRoute = Favicon({faviconSrc});
 ```
 
 ### PWA Support
 
 Visor also supports Progressive Web App (PWA) features.
 
-In addition to generating the necessary tags for PWA support, Visor can also be used to generate a `manifest.json` file for PWA support using Astro’s [Static File Endpoints feature](https://docs.astro.build/en/core-concepts/endpoints/). 
+In addition to generating the necessary tags for PWA support, Visor can also be used to generate a `manifest.json` file for PWA support using Astro’s [Static File Endpoints feature](https://docs.astro.build/en/core-concepts/endpoints/).
 
 Add the `pwa` prop to the <Head> component in your Astro layout:
 
 ```diff lang=astro title="src/layouts/default.astro"
 <Head
-  title="Example Site" 
+  title="Example Site"
   {'...'}
 + pwa
 />
@@ -97,9 +105,9 @@ Finally create a new API route to generate the `manifest.json` file:
 ```ts
 // pages/manifest.json.ts
 import type {APIRoute} from "astro";
-import Manifest from "../src/lib/manifest";
+import Manifest from "@binz/visor/manifest";
 
-import favicon from "../images/Logo.svg";
+import favicon from "./../images/Logo.svg";
 
 const faviconPngSizes = [192, 512];
 
@@ -116,7 +124,6 @@ export const GET: APIRoute = Manifest({
     faviconSizes: faviconPngSizes,
   },
 });
-
 ```
 
 ## Example
@@ -126,8 +133,8 @@ A more detailed example of how to use `Visor` in an Astro layout is shown below:
 ```jsx
 // src/layouts/default.astro
 ---
-import { Head } from '@binz/visor/Head.astro'
-import logoSvgSrc from '../../public/Logo.svg';
+import {Visor} from '@binz/visor';
+import logoSvgSrc from '../images/Logo.svg';
 
 interface Props {
   title: string;
@@ -145,7 +152,7 @@ const {
   keywords,
 } = Astro.props;
 
-const canonicalUrl = Astro.url; // requires `site` in astro.config.mjs
+const canonicalUrl = Astro.url;
 const { hostname, pathname } = canonicalUrl;
 
 const DEFAULT_KEYWORDS = [
@@ -157,7 +164,7 @@ const DEFAULT_KEYWORDS = [
 const title = `${pageTitle} | ${SITE_NAME}`;
 ---
 <html lang="en">
-  <Head
+  <Visor
     author={{{
       name: "Joe Bloggs",
       twitterHandle: "@joe_blogs"
@@ -178,7 +185,7 @@ const title = `${pageTitle} | ${SITE_NAME}`;
   >
     <!-- Add custom head tags -->
     <link rel="stylesheet" href="/styles/global.css" />
-  </Head>
+  </Visor>
   <body>
     <!-- Your content here -->
   </body>
@@ -186,4 +193,5 @@ const title = `${pageTitle} | ${SITE_NAME}`;
 ```
 
 ## License
+
 This Astro Head component is open source and available under the MIT License.

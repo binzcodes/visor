@@ -36,23 +36,33 @@ Import the <Head> component from the Visor package and use it in your Astro Layo
 ```jsx
 // src/layouts/default.astro
 ---
-import { Head } from '@binz/visor/Head.astro'
-import logoSvgSrc from '../../public/Logo.svg';
+import {Visor} from '@binz/visor';
+import logoSvgSrc from '../images/Logo.svg';
+
+interface Props {
+  title: string;
+}
+
+const { title: pageTitle } = Astro.props;
+const canonicalUrl = Astro.url;
 ---
+<!doctype html>
 <html lang="en">
-  <Head
+  <Visor
     author={{{
       name: "Joe Bloggs",
       twitterHandle: "@joe_blogs"
     }}}
-    canonicalURL="https://example.com"
+    canonicalURL={canonicalUrl}
     description="Built with visor"
     defaultKeywords={[]}
     siteName="Example Site"
     siteFaviconSvg={logoSvgSrc}
     socialImagePath="/social.jpg"
     title="Example Site"
-  />
+  >
+    <!-- Additional head tags -->
+  </Visor>
   <body>
     <!-- Your content here -->
   </body>
