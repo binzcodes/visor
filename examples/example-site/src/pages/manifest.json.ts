@@ -1,5 +1,5 @@
 import type {APIRoute} from "astro";
-import Manifest from "@binz/visor/src/lib/manifest";
+import Manifest from "@binz/visor/manifest";
 
 import favicon from "./../images/Logo.svg";
 
