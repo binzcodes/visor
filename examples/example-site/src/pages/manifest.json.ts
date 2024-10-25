@@ -1,8 +1,7 @@
-import path from "node:path";
 import type {APIRoute} from "astro";
 import Manifest from "@binz/visor/src/lib/manifest";
 
-import favicon from "../images/favicon.ico";
+import favicon from "./../images/Logo.svg";
 
 const faviconPngSizes = [192, 512];
 
