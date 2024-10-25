@@ -1,5 +1,11 @@
 # example-site
 
+## 0.1.1
+
+### Patch Changes
+
+- 2268f82: Set package private to prevent attempts to publish
+
 ## 0.1.0
 
 ### Minor Changes
