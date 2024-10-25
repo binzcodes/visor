@@ -23,7 +23,7 @@ importers:
     dependencies:
       '@astrojs/check':
         specifier: ^0.9.4
-        version: 0.9.4(typescript@5.6.3)
+        version: 0.9.4(prettier@2.8.8)(typescript@5.6.3)
       '@binz/visor':
         specifier: workspace:*
         version: link:../../packages/visor
@@ -41,31 +41,6 @@ importers:
         version: 5.6.3
 
   packages/visor:
-    dependencies:
-      '@types/node':
-        specifier: ^20.17.0
-        version: 20.17.0
-      astro:
-        specifier: ^4.16.7
-        version: 4.16.7(@types/node@20.17.0)(rollup@4.24.0)(typescript@5.6.3)
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
-      sharp-ico:
-        specifier: ^0.1.5
-        version: 0.1.5
-      web-vitals:
-        specifier: ^3.5.2
-        version: 3.5.2
-    devDependencies:
-      '@binz/eslint':
-        specifier: ^0.1.5
-        version: 0.1.5
-      '@binz/tsconfig':
-        specifier: ^0.3.2
-        version: 0.3.2
-
-  packages/visor-old:
     dependencies:
       '@types/node':
         specifier: ^20.17.0
@@ -2223,9 +2198,9 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@astrojs/check@0.9.4(typescript@5.6.3)':
+  '@astrojs/check@0.9.4(prettier@2.8.8)(typescript@5.6.3)':
     dependencies:
-      '@astrojs/language-server': 2.15.3(typescript@5.6.3)
+      '@astrojs/language-server': 2.15.3(prettier@2.8.8)(typescript@5.6.3)
       chokidar: 4.0.1
       kleur: 4.1.5
       typescript: 5.6.3
@@ -2238,7 +2213,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.1': {}
 
-  '@astrojs/language-server@2.15.3(typescript@5.6.3)':
+  '@astrojs/language-server@2.15.3(prettier@2.8.8)(typescript@5.6.3)':
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/yaml2ts': 0.2.1
@@ -2252,12 +2227,14 @@ snapshots:
       volar-service-css: 0.0.61(@volar/language-service@2.4.7)
       volar-service-emmet: 0.0.61(@volar/language-service@2.4.7)
       volar-service-html: 0.0.61(@volar/language-service@2.4.7)
-      volar-service-prettier: 0.0.61(@volar/language-service@2.4.7)
+      volar-service-prettier: 0.0.61(@volar/language-service@2.4.7)(prettier@2.8.8)
       volar-service-typescript: 0.0.61(@volar/language-service@2.4.7)
       volar-service-typescript-twoslash-queries: 0.0.61(@volar/language-service@2.4.7)
       volar-service-yaml: 0.0.61(@volar/language-service@2.4.7)
       vscode-html-languageservice: 5.3.1
       vscode-uri: 3.0.8
+    optionalDependencies:
+      prettier: 2.8.8
     transitivePeerDependencies:
       - typescript
 
@@ -4544,11 +4521,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.7
 
-  volar-service-prettier@0.0.61(@volar/language-service@2.4.7):
+  volar-service-prettier@0.0.61(@volar/language-service@2.4.7)(prettier@2.8.8):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.7
+      prettier: 2.8.8
 
   volar-service-typescript-twoslash-queries@0.0.61(@volar/language-service@2.4.7):
     dependencies:
