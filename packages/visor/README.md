@@ -33,7 +33,7 @@ Currently, Visor requires the `sharp` and `sharp-ico` packages to be installed i
 
 Import the <Head> component from the Visor package and use it in your Astro Layout component:
 
-```jsx
+```astro
 // src/layouts/default.astro
 ---
 import {Visor} from '@binz/visor';
@@ -49,16 +49,16 @@ const canonicalUrl = Astro.url;
 <!doctype html>
 <html lang="en">
   <Visor
-    author={{{
+    author={{
       name: "Joe Bloggs",
       twitterHandle: "@joe_blogs"
-    }}}
+    }}
     canonicalURL={canonicalUrl}
     description="Built with visor"
     defaultKeywords={[]}
     siteName="Example Site"
     siteFaviconSvg={logoSvgSrc}
-    socialImagePath="/social.jpg"
+    socialImagePath="/social.png"
     title="Example Site"
   />
   <body>
@@ -113,16 +113,17 @@ const faviconPngSizes = [192, 512];
 
 export const GET: APIRoute = Manifest({
   name: "Example Site",
-  description: "An example site",
-  start_url: "/",
-  display: "standalone",
-  id: "example-com",
   background_color: "#FFFFFF",
-  theme_color: "#B9FF66",
+  description: "An example site",
+  display: "standalone",
   favicon: {
     src: favicon,
     faviconSizes: faviconPngSizes,
   },
+  id: "example-com",
+  short_name: "Example",
+  start_url: "/",
+  theme_color: "#B9FF66",
 });
 ```
 
@@ -130,11 +131,13 @@ export const GET: APIRoute = Manifest({
 
 A more detailed example of how to use `Visor` in an Astro layout is shown below:
 
-```jsx
+```astro
 // src/layouts/default.astro
 ---
 import {Visor} from '@binz/visor';
 import logoSvgSrc from '../images/Logo.svg';
+
+const SITE_NAME = 'Example Site';
 
 interface Props {
   title: string;
@@ -147,19 +150,12 @@ interface Props {
 const {
   title: pageTitle,
   description,
-  socialImagePath: socialImage = '/social.jpg',
+  socialImagePath: socialImage = '/social.png',
   socialImageAltText = pageTitle,
   keywords,
 } = Astro.props;
 
 const canonicalUrl = Astro.url;
-const { hostname, pathname } = canonicalUrl;
-
-const DEFAULT_KEYWORDS = [
-  SITE_NAME,
-  hostname,
-  ...
-];
 
 const title = `${pageTitle} | ${SITE_NAME}`;
 ---
@@ -171,7 +167,7 @@ const title = `${pageTitle} | ${SITE_NAME}`;
     }}}
     canonicalURL={canonicalUrl}
     description={description}
-    defaultKeywords={DEFAULT_KEYWORDS}
+    defaultKeywords={[ SITE_NAME, 'example' ]}
     keywords={keywords}
     siteName="Example Site"
     siteFaviconSvg={logoSvgSrc}
@@ -179,7 +175,9 @@ const title = `${pageTitle} | ${SITE_NAME}`;
     siteTwitterHandle="@example_dot_com"
     socialImagePath={socialImage}
     socialImageAltText={socialImageAltText}
-    siteThemeColour={SITE_THEME_COLOUR}
+		socialTwitterCardType='summary_large_image'
+    siteThemeColour={'#883aea'}
+		contentType='website'
     title={title}
     pwa
   >
