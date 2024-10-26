@@ -1,7 +1,7 @@
 import type {APIRoute, UnresolvedImageTransform} from "astro";
 import {getImage} from "astro:assets";
 
-const faviconPngSizes = [192, 384, 512, 1024];
+const iconPngSizes = [192, 384, 512, 1024];
 
 interface Manifest {
   name: string;
@@ -16,8 +16,8 @@ interface Manifest {
 }
 
 export interface ManifestConfig extends Omit<Manifest, "icons"> {
-  favicon: Omit<UnresolvedImageTransform, "width" | "height"> & {
-    faviconSizes?: number[];
+  icon: Omit<UnresolvedImageTransform, "width" | "height"> & {
+    iconSizes?: number[];
   };
 }
 
@@ -37,21 +37,22 @@ export const buildManifest: ManifestRoute =
     theme_color = "#000000",
     background_color = "#ffffff",
     id = name.replace(/[\s.]/g, "-").toLowerCase(),
-    favicon: {src, faviconSizes = faviconPngSizes, ...faviconOptions},
+    icon: {src, iconSizes = iconPngSizes, ...iconOptions},
   }): APIRoute =>
   async () => {
     const icons = await Promise.all(
-      faviconSizes.map(async size => {
+      iconSizes.map(async size => {
         const image = await getImage({
           src,
           width: size,
           height: size,
-          ...faviconOptions,
+          ...iconOptions,
         });
         return {
           src: image.src,
           type: `image/${image.options.format}`,
           sizes: `${image.options.width}x${image.options.height}`,
+          purpose: "any",
         };
       })
     );

@@ -10,9 +10,9 @@ export const GET: APIRoute = Manifest({
   background_color: "#FFFFFF",
   description: "An example site",
   display: "standalone",
-  favicon: {
+  icon: {
     src: favicon,
-    faviconSizes: faviconPngSizes,
+    iconSizes: faviconPngSizes,
   },
   id: "example-com",
   short_name: "Example",
