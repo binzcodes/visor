@@ -2,12 +2,28 @@
 import {Visor} from '@binz/visor';
 import logoSvgSrc from '../images/Logo.svg';
 
+const SITE_NAME = 'Example Site';
+
 interface Props {
   title: string;
+  description: string;
+  socialImagePath?: string;
+  socialImageAltText?: string;
+  keywords?: string[];
 }
 
-const { title: pageTitle } = Astro.props;
+const {
+  title: pageTitle,
+  description,
+  socialImagePath: socialImage = '/social.png',
+  socialImageAltText = pageTitle,
+  keywords,
+} = Astro.props;
+
 const canonicalUrl = Astro.url;
+
+const title = `${pageTitle} | ${SITE_NAME}`;
+
 ---
 <!doctype html>
 <html lang="en">
@@ -17,13 +33,20 @@ const canonicalUrl = Astro.url;
       twitterHandle: "@joe_blogs"
     }}
     canonicalURL={canonicalUrl}
-    description="Built with visor"
-    defaultKeywords={[]}
+    description={description}
+    defaultKeywords={[ SITE_NAME, 'example' ]}
+    keywords={keywords}
     siteName="Example Site"
     siteFaviconSvg={logoSvgSrc}
-    socialImagePath="/social.jpg"
-    title={pageTitle}
-		pwa
+    siteLocale="en_US"
+    siteTwitterHandle="@example_dot_com"
+    socialImagePath={socialImage}
+    socialImageAltText={socialImageAltText}
+		socialTwitterCardType='summary_large_image'
+    siteThemeColour={'#883aea'}
+		contentType='website'
+    title={title}
+    pwa
   />
 	<body>
 		<slot />
