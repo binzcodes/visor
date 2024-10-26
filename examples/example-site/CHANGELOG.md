@@ -1,5 +1,14 @@
 # example-site
 
+## 0.1.2
+
+### Patch Changes
+
+- a3af8f3: Add short_name to Manifest options
+- 92e7728: Add missing param options to `<Visor />` in Layout
+- Updated dependencies [5a8563b]
+  - @binz/visor@0.3.1
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @binz/visor
 
+## 0.3.1
+
+### Patch Changes
+
+- 5a8563b: Add `short_name` to manifest builder
+
 ## 0.3.0
 
 ### Minor Changes
