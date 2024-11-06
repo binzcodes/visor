@@ -73,6 +73,8 @@ See the core package [README](./packages/visor/README.md) for advanced usage inc
 - [PWA support](./packages/visor/README.md#pwa-support)
 - [Dynamic favicon generation](./packages/visor/README.md#site-favicon-generation)
 
+We recommend [`astro-shield`](https://github.com/kindspells/astro-shield) for additional security headers.
+
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request to the GitHub repository.
