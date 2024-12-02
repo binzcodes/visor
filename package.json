@@ -12,6 +12,7 @@
     "clean": "turbo run clean",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "preview": "turbo run preview",
     "test": "turbo run test",
     "ci:publish": "turbo run build && changeset publish"
   },
