@@ -35,7 +35,7 @@
   "devDependencies": {
     "@binz/eslint": "^0.1.5",
     "@binz/tsconfig": "^0.3.2",
-    "astro": "^4.16.7"
+    "astro": "^4.16.18"
   },
   "peerDependencies": {
     "astro": "^4.0.0",
